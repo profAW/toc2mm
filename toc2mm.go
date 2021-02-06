@@ -39,8 +39,8 @@ func getTocFilesInFolders(root string) ([]string, error) {
 }
 
 func doConversion() {
-	dir, _ := os.Getwd()
-	files, _ := getTocFilesInFolders(dir)
+	//dir, _ := os.Getwd()
+	//files, _ := getTocFilesInFolders(dir)
 
 	ex, err := os.Executable()
 	if err != nil {
@@ -49,7 +49,7 @@ func doConversion() {
 	exePath := filepath.Dir(ex)
 	fmt.Println(exePath)
 
-	//files, _ := getTocFilesInFolders(exePath)
+	files, _ := getTocFilesInFolders(exePath)
 
 	fmt.Println(files)
 	for _, file := range files {
