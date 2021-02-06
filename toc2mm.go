@@ -103,9 +103,9 @@ func removeAndReplaceToc2Plant(line string) string {
 	line = strings.ReplaceAll(line, "}", ".")
 
 	// Do not change order of Replacements
-	line = strings.ReplaceAll(line, "subsubsectionintoc", "****")
-	line = strings.ReplaceAll(line, "subsectionintoc", "***")
-	line = strings.ReplaceAll(line, "sectionintoc", "**")
+	line = strings.ReplaceAll(line, "subsubsectionintoc", "****[#lightgreen]")
+	line = strings.ReplaceAll(line, "subsectionintoc", "***[#lightblue]")
+	line = strings.ReplaceAll(line, "sectionintoc", "**[#Orange]")
 	return line
 }
 
@@ -119,7 +119,6 @@ func convertToPlantUmlSyntax(lines []string) []string {
 		lines[key] = line
 	}
 	breakPoint := addLeftSectionsInToc(lines) + 1
-	fmt.Println(breakPoint)
 	result := []string{"@startmindmap", "* TOC"}
 	lines = append(result, lines...)
 	lines = append(lines, "@endmindmap")
@@ -135,32 +134,37 @@ func countSectionsInToc(lines []string) int {
 	var ret = 0
 	for _, line := range lines {
 		entry := strings.Split(line, ".")
-		entry[0] = strings.ReplaceAll(entry[0], "*", "")
-		entry[0] = strings.ReplaceAll(entry[0], " ", "")
+		entry[0] = replaceTocString(entry[0])
 		i64, _ := strconv.ParseInt(entry[0], 10, 64)
 		ret = int(i64)
 	}
 	return ret
 }
 
+func replaceTocString(entry string) string {
+	entry = strings.ReplaceAll(entry, "*", "")
+	entry = strings.ReplaceAll(entry, " ", "")
+	entry = strings.ReplaceAll(entry, "[#lightgreen]", "")
+	entry = strings.ReplaceAll(entry, "[#lightblue]", "")
+	entry = strings.ReplaceAll(entry, "[#Orange]", "")
+	return entry
+}
+
 func addLeftSectionsInToc(lines []string) int {
 	//Create a   dictionary of values for each element
 	numberOfSection := countSectionsInToc(lines)
-	fmt.Println(numberOfSection)
-
 	d := float64(numberOfSection) / float64(2)
+	breakPoint := int(math.Ceil(d)) + 1
 
-	breakPoint := int(math.Ceil(d))
 	var ret = 0
 	var postion = 0
 	for key, line := range lines {
 		entry := strings.Split(line, ".")
-		entry[0] = strings.ReplaceAll(entry[0], "*", "")
-		entry[0] = strings.ReplaceAll(entry[0], " ", "")
+		entry[0] = replaceTocString(entry[0])
+
 		i64, _ := strconv.ParseInt(entry[0], 10, 64)
 		ret = int(i64)
 		if ret == breakPoint {
-			fmt.Println(key)
 			postion = key
 			break
 		}
@@ -206,5 +210,4 @@ func main() {
 
 	log.Info("Press enter key to exit...")
 	helper.CloseApplicationWithOutError()
-
 }
