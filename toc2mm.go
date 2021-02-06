@@ -5,8 +5,10 @@ import (
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
+	"math"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"toc2mm/helper"
 )
@@ -37,14 +39,18 @@ func getTocFilesInFolders(root string) ([]string, error) {
 }
 
 func doConversion() {
-	//dir, _ := os.Getwd()
+	dir, _ := os.Getwd()
+	files, _ := getTocFilesInFolders(dir)
+
 	ex, err := os.Executable()
 	if err != nil {
 		panic(err)
 	}
 	exePath := filepath.Dir(ex)
 	fmt.Println(exePath)
-	files, _ := getTocFilesInFolders(exePath)
+
+	//files, _ := getTocFilesInFolders(exePath)
+
 	fmt.Println(files)
 	for _, file := range files {
 		var lines = readBasicFileData(file)
@@ -104,6 +110,7 @@ func removeAndReplaceToc2Plant(line string) string {
 }
 
 func convertToPlantUmlSyntax(lines []string) []string {
+
 	for key, element := range lines {
 		entr := strings.Split(element, "{")
 		entr = removeLastThreeEntries(entr)
@@ -111,12 +118,55 @@ func convertToPlantUmlSyntax(lines []string) []string {
 		line = removeAndReplaceToc2Plant(line)
 		lines[key] = line
 	}
-
+	breakPoint := addLeftSectionsInToc(lines) + 1
+	fmt.Println(breakPoint)
 	result := []string{"@startmindmap", "* TOC"}
 	lines = append(result, lines...)
 	lines = append(lines, "@endmindmap")
 
+	lines = append(lines, "")
+	copy(lines[breakPoint+1:], lines[breakPoint:])
+	lines[breakPoint+1] = "left side"
+
 	return lines
+}
+func countSectionsInToc(lines []string) int {
+	//Create a   dictionary of values for each element
+	var ret = 0
+	for _, line := range lines {
+		entry := strings.Split(line, ".")
+		entry[0] = strings.ReplaceAll(entry[0], "*", "")
+		entry[0] = strings.ReplaceAll(entry[0], " ", "")
+		i64, _ := strconv.ParseInt(entry[0], 10, 64)
+		ret = int(i64)
+	}
+	return ret
+}
+
+func addLeftSectionsInToc(lines []string) int {
+	//Create a   dictionary of values for each element
+	numberOfSection := countSectionsInToc(lines)
+	fmt.Println(numberOfSection)
+
+	d := float64(numberOfSection) / float64(2)
+
+	breakPoint := int(math.Ceil(d))
+	var ret = 0
+	var postion = 0
+	for key, line := range lines {
+		entry := strings.Split(line, ".")
+		entry[0] = strings.ReplaceAll(entry[0], "*", "")
+		entry[0] = strings.ReplaceAll(entry[0], " ", "")
+		i64, _ := strconv.ParseInt(entry[0], 10, 64)
+		ret = int(i64)
+		if ret == breakPoint {
+			fmt.Println(key)
+			postion = key
+			break
+		}
+	}
+	return postion
+
 }
 
 func removeLastThreeEntries(entry []string) []string {
