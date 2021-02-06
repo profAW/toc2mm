@@ -14,5 +14,6 @@ Tool zur Überführung eines Latex toc-files in ein Plantuml Mindmap
 
 ## ToDos
 
+- Error-Handling für z.B. File-Zugriffe
 - Unit-Tests anlegen
 - direkte Überführung in ein Bild mit hilfe von Plantuml jar-file
