@@ -38,18 +38,20 @@ func getTocFilesInFolders(root string) ([]string, error) {
 	return matches, nil
 }
 
-func doConversion() {
+func doConversion(debug bool) {
 	//dir, _ := os.Getwd()
 	//files, _ := getTocFilesInFolders(dir)
 
-	ex, err := os.Executable()
-	if err != nil {
-		panic(err)
-	}
-	exePath := filepath.Dir(ex)
-	fmt.Println(exePath)
+	//ex, err := os.Executable()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//#exePath := filepath.Dir(ex)
 
-	files, _ := getTocFilesInFolders(exePath)
+	var directory string = helper.GetCurrentDir(debug)
+	fmt.Println(directory)
+
+	files, _ := getTocFilesInFolders(directory)
 
 	fmt.Println(files)
 	for _, file := range files {
@@ -200,13 +202,15 @@ func createMindMapFile(lines []string, path string) {
 	}
 }
 
+var debug bool = false
+
 func main() {
 
 	log.Info("### Welcome and remember 'never forget your towel' ###")
 	log.Info("------------------------------------------------------")
 	log.Info("toc2mm-Version: " + version)
 
-	doConversion()
+	doConversion(debug)
 
 	log.Info("Press enter key to exit...")
 	helper.CloseApplicationWithOutError()
