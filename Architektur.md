@@ -1,202 +1,113 @@
+# Einführung und Ziele
 
-Einführung und Ziele
-====================
+## Aufgabenstellung
+* Grafische Darstellung des TOC eines Latex-Dokumentes als MindMap.
+* Umwandlung des toc-files in ein plantuml-mindmap
 
-Aufgabenstellung
-----------------
+## Qualitätsziele
+* fehlerfreie Umwandlung des TOC in MM (kein Verschieben von Sectionen)
+* toc file innerhalb von 5s in MM
+
+## Stakeholder
+* Prof. A. Wenzel für seine eigene Orga
+* Studierende zum besseren Verständnis der Inhalte und Zusammenhänge
+
+# Randbedingungen 
+* Muss auf Windows und Mac laufen
+* ggf. Publizierung auf GitHub, wenn alles "chic" ist
+
+# Kontextabgrenzung 
+
+## Fachlicher Kontext
+```plantuml
+@startuml fachlicherKontext
+
+     !include wzlLib.plantuml
+
+    frame "<&script> Umwandlungsablauf" as Umwandlung{
+       
+    }
+    actor "Anwender" as user
+    file "<&image> TOC-MindMap" as mmpng
+    collections "<&folder> Latex Projekt" as LatexProjekt
 
 
+    user --> Umwandlung: steuert
+    LatexProjekt <. Umwandlung: nutzt
+    Umwandlung --> mmpng: erzeugt
 
-Qualitätsziele
---------------
+@enduml
+```
 
-Stakeholder
------------
 
-+-----------------+-----------------+-----------------------------------+
-| Rolle           | Kontakt         | Erwartungshaltung                 |
-+=================+=================+===================================+
-| *\<Rolle-1\>*   | *\<Kontakt-1\>* | *\<Erwartung-1\>*                 |
-+-----------------+-----------------+-----------------------------------+
-| *\<Rolle-2\>*   | *\<Kontakt-2\>* | *\<Erwartung-2\>*                 |
-+-----------------+-----------------+-----------------------------------+
+## Technischer Kontext 
+```plantuml
+@startuml technischerKontext
 
-Randbedingungen 
-===============
+     !include wzlLib.plantuml
 
-Kontextabgrenzung 
-=================
+    frame "<&script> Umwandlungsablauf" as Umwandlung{
+        component toc2mm
+        file "<&file> TOC-\nMindMap\n.plantuml" as mm
+        component "plantuml.jar" as plantuml
+        file "<&file> Konfiguration" as config
+    }
+    actor "Anwender" as user
+    file "<&image> TOC-MindMap" as mmpng
+    file "<&image> *.toc" as toc
+    collections "Latex Projekt" as LatexProjekt
 
-Fachlicher Kontext
-------------------
 
-**\<Diagramm und/oder Tabelle\>**
+    user --> toc2mm: startet
+    config <. toc2mm: nutzt
+    toc2mm -.> toc: nutzt
+    LatexProjekt .> toc: enthält
+    toc2mm -> mm: erzeugt
+    mm <. plantuml: nutzt
+    user --> plantuml: nutzt
+    plantuml --> mmpng: erzeugt
 
-**\<optional: Erläuterung der externen fachlichen Schnittstellen\>**
+@enduml
+```
+# Lösungsstrategie
+* Umwandlung des TOC (section, subsection, ...) in ein plantuml-mind-map (file.plantuml), dass dann durch ein externes Tool erzeugt werden kann
+* Formatierungsvorgagen ggf. über Konfigurationsdatei
+* Eigentliche Umwandlung  in ein Bild mittels plantuml.jar und script file
 
-Technischer Kontext 
--------------------
+# Bausteinsicht 
 
-**\<Diagramm oder Tabelle\>**
+## Whitebox Gesamtsystem 
 
-**\<optional: Erläuterung der externen technischen Schnittstellen\>**
+## Ebene 1
 
-**\<Mapping fachliche auf technische Schnittstellen\>**
-
-Lösungsstrategie
-================
-
-Bausteinsicht 
-=============
-
-Whitebox Gesamtsystem 
----------------------
-
-***\<Übersichtsdiagramm\>***
-
-Begründung
-
-:   *\<Erläuternder Text\>*
-
-Enthaltene Bausteine
-
-:   *\<Beschreibung der enthaltenen Bausteine (Blackboxen)\>*
-
-Wichtige Schnittstellen
-
-:   *\<Beschreibung wichtiger Schnittstellen\>*
-
-### \<Name Blackbox 1\> {#__name_blackbox_1}
-
-*\<Zweck/Verantwortung\>*
-
-*\<Schnittstelle(n)\>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale\>*
-
-*\<(Optional) Ablageort/Datei(en)\>*
-
-*\<(Optional) Erfüllte Anforderungen\>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken\>*
-
-### \<Name Blackbox 2\> {#__name_blackbox_2}
-
-*\<Blackbox-Template\>*
-
-### \<Name Blackbox n\> {#__name_blackbox_n}
-
-*\<Blackbox-Template\>*
-
-### \<Name Schnittstelle 1\> {#__name_schnittstelle_1}
-
-...
-
-### \<Name Schnittstelle m\> {#__name_schnittstelle_m}
-
-Ebene 2 {#_ebene_2}
--------
-
-### Whitebox *\<Baustein 1\>* {#_whitebox_emphasis_baustein_1_emphasis}
-
-*\<Whitebox-Template\>*
-
-### Whitebox *\<Baustein 2\>* {#_whitebox_emphasis_baustein_2_emphasis}
-
-*\<Whitebox-Template\>*
-
-...
-
-### Whitebox *\<Baustein m\>* {#_whitebox_emphasis_baustein_m_emphasis}
+### Whitebox *\<Baustein 1\>* 
 
 *\<Whitebox-Template\>*
 
 
+# Laufzeitsicht 
 
-Laufzeitsicht 
-=============
+## *\<Bezeichnung Laufzeitszenario 1\>*
 
-*\<Bezeichnung Laufzeitszenario 1\>*
-------------------------------------
+# Verteilungssicht 
 
--   \<hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen\>
+## Infrastruktur Ebene 1
 
--   \<hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem
-    Szenario erläutern\>
+# Querschnittliche Konzepte 
 
-*\<Bezeichnung Laufzeitszenario 2\>* {#__emphasis_bezeichnung_laufzeitszenario_2_emphasis}
-------------------------------------
+## *\<Konzept 1\>* 
 
-...
+# Entwurfsentscheidungen
+            * Stategy-Pattern für umsetzung der Anpassung
+            * Versuch einer Onion-Struktur
 
-*\<Bezeichnung Laufzeitszenario n\>* {#__emphasis_bezeichnung_laufzeitszenario_n_emphasis}
-------------------------------------
+# Qualitätsanforderungen 
 
-...
+## Qualitätsbaum 
 
-Verteilungssicht {#section-deployment-view}
-================
-
-Infrastruktur Ebene 1 {#_infrastruktur_ebene_1}
----------------------
-
-***\<Übersichtsdiagramm\>***
-
-Begründung
-
-:   *\<Erläuternder Text\>*
-
-Qualitäts- und/oder Leistungsmerkmale
-
-:   *\<Erläuternder Text\>*
-
-Zuordnung von Bausteinen zu Infrastruktur
-
-:   *\<Beschreibung der Zuordnung\>*
+## Qualitätsszenarien 
 
 
-Querschnittliche Konzepte 
-=========================
+# Risiken und technische Schulden 
 
-*\<Konzept 1\>* {#__emphasis_konzept_1_emphasis}
----------------
-
-*\<Erklärung\>*
-
-*\<Konzept 2\>* {#__emphasis_konzept_2_emphasis}
----------------
-
-*\<Erklärung\>*
-
-...
-
-*\<Konzept n\>* {#__emphasis_konzept_n_emphasis}
----------------
-
-*\<Erklärung\>*
-
-Entwurfsentscheidungen 
-======================
-
-Qualitätsanforderungen 
-======================
-
-Qualitätsbaum 
--------------
-
-Qualitätsszenarien 
-------------------
-
-Risiken und technische Schulden 
-===============================
-
-Glossar {#section-glossary}
-=======
-
-+-----------------------+-----------------------------------------------+
-| Begriff               | Definition                                    |
-+=======================+===============================================+
-| *\<Begriff-1\>*       | *\<Definition-1\>*                            |
-+-----------------------+-----------------------------------------------+
-| *\<Begriff-2*         | *\<Definition-2\>*                            |
-+-----------------------+-----------------------------------------------+
+# Glossar

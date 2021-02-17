@@ -60,8 +60,9 @@ func doConversion(debug bool) {
 		lines = convertToPlantUmlSyntax(lines)
 		file2 := strings.TrimSuffix(file, ".toc")
 		s := []string{file2, "-toc-mm.plantuml"}
-		file3 := strings.Join(s, "")
-		createMindMapFile(lines, file3)
+		outputfileName := strings.Join(s, "")
+		createMindMapFile(lines, outputfileName)
+		// infrastructure.GeneratePlantumlDiagramm(outputfileName)
 	}
 }
 
@@ -202,7 +203,7 @@ func createMindMapFile(lines []string, path string) {
 	}
 }
 
-var debug bool = false
+var debug bool = true
 
 func main() {
 
