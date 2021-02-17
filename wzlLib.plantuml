@@ -1,0 +1,62 @@
+@startuml
+' https://plantuml.com/de/skinparam
+' https://plantuml-documentation.readthedocs.io/en/latest/formatting/all-skin-params.html
+
+skinparam DefaultFontName Hack
+'skinparam Handwritten True
+'skinparam monochrome True
+skinparam shadowing false
+allow_mixing
+'skinparam linetype ortho
+
+skinparam RoundCorner 10
+skinparam ComponentBorderColor Black
+skinparam Actor {
+    BorderColor Black
+    BackgroundColor White
+    'BackgroundColor hidden 'Damit etwas verschwindet"
+
+}
+
+skinparam Component {
+    BorderColor Black
+    BackgroundColor AliceBlue
+    ArrowThickness 2
+
+}
+
+skinparam Database {
+    BorderColor Black
+    BackgroundColor AliceBlue
+}
+
+skinparam usecase {
+    BorderColor Black
+    BackgroundColor AliceBlue
+}
+
+skinparam rectangle {
+    BorderColor Black
+    BackgroundColor AliceBlue
+}
+
+skinparam node {
+    BorderColor Black
+    BackgroundColor White
+}
+
+skinparam requirement {
+    BorderColor Black
+    BackgroundColor White
+}
+
+skinparam card {
+    BorderColor Black
+    BackgroundColor White
+}
+skinparam object {
+    BorderColor Black
+    BackgroundColor AliceBlue
+}
+
+@enduml
