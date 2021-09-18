@@ -13,7 +13,7 @@ import (
 	"toc2mm/helper"
 )
 
-var version = "0.0.8"
+var version = "0.0.9"
 
 func getTocFilesInFolders(root string) ([]string, error) {
 	var matches []string
@@ -39,14 +39,6 @@ func getTocFilesInFolders(root string) ([]string, error) {
 }
 
 func doConversion(debug bool) {
-	//dir, _ := os.Getwd()
-	//files, _ := getTocFilesInFolders(dir)
-
-	//ex, err := os.Executable()
-	//if err != nil {
-	//	panic(err)
-	//}
-	//#exePath := filepath.Dir(ex)
 
 	var directory string = helper.GetCurrentDir(debug)
 	fmt.Println(directory)
@@ -77,12 +69,16 @@ func readBasicFileData(file string) []string {
 func removeOverheadLines(lines []string) []string {
 	const delString1 = "\\babel@toc {german}{}"
 	const delString2 = "relax"
+	const delString3 = "\\babel@toc"
 
 	for key, element := range lines {
 		if strings.Contains(element, delString2) {
 			lines[key] = ""
 		}
 		if element == (delString1) {
+			lines[key] = ""
+		}
+		if element == (delString3) {
 			lines[key] = ""
 		}
 	}
@@ -112,16 +108,38 @@ func removeAndReplaceToc2Plant(line string) string {
 	return line
 }
 
+func removeArticlePrefixes(line string) string {
+	line = strings.ReplaceAll(line, "}", " ")
+	//	fmt.Println(line)
+	line = strings.ReplaceAll(line, "subsubsection", "****[#lightgreen]")
+	//	fmt.Println(line)
+	line = strings.ReplaceAll(line, "subsection", "***[#lightblue]")
+	//	fmt.Println(line)
+	line = strings.ReplaceAll(line, "section", "**[#Orange]")
+	//	fmt.Println(line)
+	var lineArray = strings.Split(line, "{")
+	line = lineArray[1] + " " + lineArray[3] //+ lineArray[4]
+	fmt.Println(line)
+	return line
+}
+
 func convertToPlantUmlSyntax(lines []string) []string {
 
 	for key, element := range lines {
-		entr := strings.Split(element, "{")
-		entr = removeLastThreeEntries(entr)
-		var line = strings.Join(entr, "")
-		line = removeAndReplaceToc2Plant(line)
+		var line string
+		line = element
+		if strings.Contains(line, "contentsline") {
+			line = removeArticlePrefixes(line)
+		} else {
+			entr := strings.Split(element, "{")
+			entr = removeLastThreeEntries(entr)
+			line = strings.Join(entr, "")
+			line = removeAndReplaceToc2Plant(line)
+		}
 		lines[key] = line
 	}
-	breakPoint := addLeftSectionsInToc(lines) + 1
+
+	breakPoint := addLeftSectionsInToc(lines) //+ 1
 	result := []string{"@startmindmap", "* TOC"}
 	lines = append(result, lines...)
 	lines = append(lines, "@endmindmap")
