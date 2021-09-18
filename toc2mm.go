@@ -110,16 +110,11 @@ func removeAndReplaceToc2Plant(line string) string {
 
 func removeArticlePrefixes(line string) string {
 	line = strings.ReplaceAll(line, "}", " ")
-	//	fmt.Println(line)
 	line = strings.ReplaceAll(line, "subsubsection", "****[#lightgreen]")
-	//	fmt.Println(line)
 	line = strings.ReplaceAll(line, "subsection", "***[#lightblue]")
-	//	fmt.Println(line)
 	line = strings.ReplaceAll(line, "section", "**[#Orange]")
-	//	fmt.Println(line)
 	var lineArray = strings.Split(line, "{")
 	line = lineArray[1] + " " + lineArray[3] //+ lineArray[4]
-	fmt.Println(line)
 	return line
 }
 
