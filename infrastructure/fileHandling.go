@@ -31,7 +31,10 @@ func WriteLines(lines []string, path string) error {
 
 	w := bufio.NewWriter(file)
 	for _, line := range lines {
-		fmt.Fprintln(w, line)
+		_, err = fmt.Fprintln(w, line)
+		if err != nil {
+			return err
+		}
 	}
 	return w.Flush()
 }
