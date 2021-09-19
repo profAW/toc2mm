@@ -1,0 +1,99 @@
+
+@startuml fachlicherKontext
+
+     !include wzlLib.plantuml
+
+    frame "<&script> Umwandlungsablauf" as Umwandlung{
+
+    }
+    actor "Anwender" as user
+    file "<&image> TOC-MindMap" as mmpng
+    collections "<&folder> Latex Projekt" as LatexProjekt
+
+
+    user --> Umwandlung: steuert
+    LatexProjekt <. Umwandlung: nutzt
+    Umwandlung --> mmpng: erzeugt
+
+@enduml
+
+@startuml technischerKontext
+
+     !include wzlLib.plantuml
+
+    frame "<&script> Umwandlungsablauf" as Umwandlung{
+        component toc2mm
+        file "<&file> TOC-\nMindMap\n.plantuml" as mm
+        component "plantuml.jar" as plantuml
+        file "<&file> Konfiguration" as config
+    }
+    actor "Anwender" as user
+    file "<&image> TOC-MindMap" as mmpng
+    file "<&image> *.toc" as toc
+    collections "Latex Projekt" as LatexProjekt
+
+
+    user --> toc2mm: startet
+    config <. toc2mm: nutzt
+    toc2mm -.> toc: nutzt
+    LatexProjekt .> toc: enthält
+    toc2mm -> mm: erzeugt
+    mm <. plantuml: nutzt
+    user --> plantuml: nutzt
+    plantuml --> mmpng: erzeugt
+
+@enduml
+
+@startuml Architektur
+
+     !include wzlLib.plantuml
+
+    package Infrastruktur {
+        class logging{
+            +addLogger()
+        }
+        class fileAccess{
+                +readContent(file) : iContent
+                +writeContent(file,iContent)
+            }
+        }
+    package UseCases{
+        class createMindmap
+        }
+    package Domain{
+        interface iContent{
+            +AddContent(string)
+            +GetContent() string[]
+            +SetContent(string[])
+        }
+        interface iAdaptContent{
+            + exceute(iContent) iContent
+        }
+        interface iLog{
+            +logInfo(msg string)
+            +logWarning(msg string)
+            +logError(msg string)
+            }
+        class Content{
+            - content string[]
+            }
+        class AdaptContent{
+            - trim()
+            - ...()
+            - log: ilog
+            - content :iContent
+            + AddLogger(iLog)
+            }
+
+        iContent <|-. Content
+        AdaptContent -- iLog: > log
+        iAdaptContent <|-. AdaptContent
+        iContent <- AdaptContent: < adapt
+    }
+
+    iContent .. fileAccess: < creates
+    iLog <|-. logging
+    createMindmap -- fileAccess: > read and write
+    createMindmap - iAdaptContent: > convert
+
+@enduml
