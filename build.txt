@@ -1,0 +1,4 @@
+go build -ldflags "-X main.DebugMode=false" toc2mm.go
+
+## Crosscomplile
+GOOS=windows GOARCH=386 go build -ldflags "-X main.DebugMode=false" -v toc2mm.go

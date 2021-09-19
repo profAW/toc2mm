@@ -1,7 +1,7 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
+	"fmt"
 	"strconv"
 	"toc2mm/domain"
 	"toc2mm/helper"
@@ -11,12 +11,12 @@ import (
 func doConversion(debug bool) {
 
 	var directory = helper.GetCurrentDir(debug)
-	log.Info("Working director is : " + directory)
+	fmt.Println("Working director is : " + directory)
 
 	files, _ := infrastructure.GetTocFilesInFolders(directory)
 
 	for _, file := range files {
-		log.Info("Do conversion for   : " + file)
+		fmt.Println("Do conversion for   : " + file)
 		outputfileNames := infrastructure.CreateExportFileNames(file)
 
 		var lines = infrastructure.ReadBasicFileData(file)
@@ -29,24 +29,28 @@ func doConversion(debug bool) {
 	}
 }
 
-var debug = true
+var DebugMode = "true"
 var version = "0.0.11"
 
 func main() {
+	debug, _ := strconv.ParseBool(DebugMode)
 
-	log.Info("████████╗░█████╗░░█████╗░██████╗░███╗░░░███╗███╗░░░███╗")
-	log.Info("╚══██╔══╝██╔══██╗██╔══██╗╚════██╗████╗░████║████╗░████║")
-	log.Info("░░░██║░░░██║░░██║██║░░╚═╝░░███╔═╝██╔████╔██║██╔████╔██║")
-	log.Info("░░░██║░░░██║░░██║██║░░██╗██╔══╝░░██║╚██╔╝██║██║╚██╔╝██║")
-	log.Info("░░░██║░░░╚█████╔╝╚█████╔╝███████╗██║░╚═╝░██║██║░╚═╝░██║")
-	log.Info("░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝")
-	log.Info("-------------------------------------------------------")
-	log.Info("toc2mm-Version      : " + version)
-	log.Info("Debug-Mode          : " + strconv.FormatBool(debug))
+	fmt.Println("-------------------------------------------------------")
+	fmt.Println("████████╗░█████╗░░█████╗░██████╗░███╗░░░███╗███╗░░░███╗")
+	fmt.Println("╚══██╔══╝██╔══██╗██╔══██╗╚════██╗████╗░████║████╗░████║")
+	fmt.Println("░░░██║░░░██║░░██║██║░░╚═╝░░███╔═╝██╔████╔██║██╔████╔██║")
+	fmt.Println("░░░██║░░░██║░░██║██║░░██╗██╔══╝░░██║╚██╔╝██║██║╚██╔╝██║")
+	fmt.Println("░░░██║░░░╚█████╔╝╚█████╔╝███████╗██║░╚═╝░██║██║░╚═╝░██║")
+	fmt.Println("░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝")
+	fmt.Println("-------------------------------------------------------")
+	fmt.Println("toc2mm-Version      : " + version)
+	fmt.Println("Debug-Mode          : " + strconv.FormatBool(debug))
+	fmt.Println("-------------------------------------------------------")
+	fmt.Println("")
 
 	doConversion(debug)
 
-	log.Info("---------------- Conversion finished -----------------")
-	log.Info("Press enter key to exit...")
+	fmt.Println("---------------- Conversion finished -----------------")
+	fmt.Println("Press enter key to exit...")
 	helper.CloseApplicationWithOutError()
 }
