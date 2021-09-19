@@ -10,13 +10,13 @@ import (
 
 func doConversion(debug bool) {
 
-	var directory string = helper.GetCurrentDir(debug)
+	var directory = helper.GetCurrentDir(debug)
 	log.Info("Working director is : " + directory)
 
 	files, _ := infrastructure.GetTocFilesInFolders(directory)
 
 	for _, file := range files {
-		log.Info("Do conversion for : " + file)
+		log.Info("Do conversion for   : " + file)
 		outputfileNames := infrastructure.CreateExportFileNames(file)
 
 		var lines = infrastructure.ReadBasicFileData(file)
@@ -29,18 +29,24 @@ func doConversion(debug bool) {
 	}
 }
 
-var debug bool = true
-var version = "0.0.10"
+var debug = true
+var version = "0.0.11"
 
 func main() {
 
-	log.Info("### Welcome and remember 'never forget your towel' ###")
-	log.Info("------------------------------------------------------")
-	log.Info("toc2mm-Version: " + version)
-	log.Info("Debug-Mode:" + strconv.FormatBool(debug))
+	log.Info("████████╗░█████╗░░█████╗░██████╗░███╗░░░███╗███╗░░░███╗")
+	log.Info("╚══██╔══╝██╔══██╗██╔══██╗╚════██╗████╗░████║████╗░████║")
+	log.Info("░░░██║░░░██║░░██║██║░░╚═╝░░███╔═╝██╔████╔██║██╔████╔██║")
+	log.Info("░░░██║░░░██║░░██║██║░░██╗██╔══╝░░██║╚██╔╝██║██║╚██╔╝██║")
+	log.Info("░░░██║░░░╚█████╔╝╚█████╔╝███████╗██║░╚═╝░██║██║░╚═╝░██║")
+	log.Info("░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝")
+	log.Info("-------------------------------------------------------")
+	log.Info("toc2mm-Version      : " + version)
+	log.Info("Debug-Mode          : " + strconv.FormatBool(debug))
 
 	doConversion(debug)
 
+	log.Info("---------------- Conversion finished -----------------")
 	log.Info("Press enter key to exit...")
 	helper.CloseApplicationWithOutError()
 }

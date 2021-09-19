@@ -23,7 +23,11 @@ func WriteLines(lines []string, path string) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+		}
+	}(file)
 
 	w := bufio.NewWriter(file)
 	for _, line := range lines {
