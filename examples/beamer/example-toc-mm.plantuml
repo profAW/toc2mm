@@ -1,0 +1,29 @@
+@startmindmap
+* TOC
+**[#Orange]] 1.Einführung
+**[#Orange]] 2.Wiederholung IEC-Programmierung
+***[#lightblue]] 2.1.Grundkonzepte
+***[#lightblue]] 2.2.Basiselemente
+***[#lightblue]] 2.3.SPS-Projekt-Organisation
+***[#lightblue]] 2.4.Austausch von Daten zwischen POE
+***[#lightblue]] 2.5.ToDos und Ideen
+**[#Orange]] 3.Erweitere IEC-Konzepte
+**[#Orange]] 4.Wissen SPS-Programmierung
+left side
+**[#Orange]] 5.Design-Patterns
+**[#Orange]] 6.Querschnittsthemen
+***[#lightblue]] 6.1.UML zur Systembeschreibung
+****[#lightgreen]] 6.1.1.Allgemeines
+****[#lightgreen]] 6.1.2.Use-Case-Diagramme
+****[#lightgreen]] 6.1.3.Klassendiagramme
+****[#lightgreen]] 6.1.4.Sequenz-Diagramme
+****[#lightgreen]] 6.1.5.Zustandsdiagramme
+****[#lightgreen]] 6.1.6.Andere Diagrammarten
+****[#lightgreen]] 6.1.7.Tool zum UML zeichnen
+****[#lightgreen]] 6.1.8.Test / Sandbox
+**[#Orange]] 7.Anhang
+***[#lightblue]] 7.1.Literaturverzeichnis
+****[#lightgreen]] 7.1.1.Bücher
+****[#lightgreen]] 8.0.1.Andere Quellen
+***[#lightblue]] 9.1.Glossar
+@endmindmap

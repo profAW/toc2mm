@@ -41,7 +41,7 @@ func removeEmptyLines(lines []string) []string {
 	return result
 }
 
-func changeAndRemoveBeamerContent(element string) string {
+func changeAndRemoveBeamerContent(element string, tocLevel int) string {
 	var line string
 	entr := strings.Split(element, "{")
 	entr = removeLastThreeEntries(entr)
@@ -52,37 +52,93 @@ func changeAndRemoveBeamerContent(element string) string {
 	line = strings.ReplaceAll(line, "}", ".")
 
 	// Do not change order of Replacements
-	line = strings.ReplaceAll(line, "subsubsectionintoc", "****[#lightgreen]")
-	line = strings.ReplaceAll(line, "subsectionintoc", "***[#lightblue]")
-	line = strings.ReplaceAll(line, "sectionintoc", "**[#Orange]")
+	line = replaceTocWithPlantuml(line, tocLevel)
+
 	return line
 }
 
-func changeAndRemoveArticleContent(element string) string {
+func changeAndRemoveArticleContent(element string, tocLevel int) string {
 	var line string
 	line = element
 	line = strings.ReplaceAll(line, "}", " ")
-	line = strings.ReplaceAll(line, "subsubsection", "****[#lightgreen]")
-	line = strings.ReplaceAll(line, "subsection", "***[#lightblue]")
-	line = strings.ReplaceAll(line, "section", "**[#Orange]")
+	line = strings.ReplaceAll(line, "1em", "")
+	line = replaceTocWithPlantuml(line, tocLevel)
 	var lineArray = strings.Split(line, "{")
 	line = lineArray[1] + " " + lineArray[3]
 	return line
 }
 
-func tocIsFromArticle(line string) bool {
-	return strings.Contains(line, "contentsline")
+func replaceTocWithPlantuml(line string, tocLevel int) string {
+
+	switch tocLevel {
+	case 1:
+		line = strings.ReplaceAll(line, "subparagraph", "********[#MintCream]")
+		line = strings.ReplaceAll(line, "paragraph", "*******[#Ivory]")
+		line = strings.ReplaceAll(line, "subsubsection", "******[#lightcyan]")
+		line = strings.ReplaceAll(line, "subsection", "*****[#lightyellow]")
+		line = strings.ReplaceAll(line, "section", "****[#lightgreen]")
+		line = strings.ReplaceAll(line, "chapter", "***[#lightblue]")
+		line = strings.ReplaceAll(line, "part", "**[#Orange]")
+
+	case 2:
+		line = strings.ReplaceAll(line, "subparagraph", "*******[#Ivory]")
+		line = strings.ReplaceAll(line, "paragraph", "******[#lightcyan]")
+		line = strings.ReplaceAll(line, "subsubsection", "*****[#lightyellow]")
+		line = strings.ReplaceAll(line, "subsection", "****[#lightgreen]")
+		line = strings.ReplaceAll(line, "section", "***[#lightblue]")
+		line = strings.ReplaceAll(line, "chapter", "**[#Orange]")
+
+	default:
+		line = strings.ReplaceAll(line, "subparagraph", "******[#lightcyan]")
+		line = strings.ReplaceAll(line, "paragraph", "*****[#lightyellow]")
+		line = strings.ReplaceAll(line, "subsubsection", "****[#lightgreen]")
+		line = strings.ReplaceAll(line, "subsection", "***[#lightblue]")
+		line = strings.ReplaceAll(line, "section", "**[#Orange]")
+	}
+	// if beamer
+	line = strings.ReplaceAll(line, "intoc", "]") // remove "intoc"
+
+	return line
+}
+
+// Source: https://freshman.tech/snippets/go/check-if-slice-contains-element/
+// plus anpassung
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if strings.Contains(v, str) {
+			return true
+		}
+	}
+
+	return false
+}
+
+func tocIsFromArticle(lines []string) bool {
+	return contains(lines, "contentsline")
+}
+
+func getTocLevel(lines []string) int {
+	if contains(lines, "{part}") {
+		return 1
+	}
+	if contains(lines, "{chapter}") {
+		return 2
+	}
+	return 3
+
 }
 
 func convertToPlantUmlSyntax(lines []string) []string {
 
+	var isAnArticle = tocIsFromArticle(lines)
+	var tocLevel = getTocLevel(lines)
 	for key, element := range lines {
 		var line string
 		line = element
-		if tocIsFromArticle(line) {
-			line = changeAndRemoveArticleContent(element)
+		if isAnArticle {
+			line = changeAndRemoveArticleContent(element, tocLevel)
 		} else {
-			line = changeAndRemoveBeamerContent(element)
+			line = changeAndRemoveBeamerContent(element, tocLevel)
 		}
 		lines[key] = line
 	}
