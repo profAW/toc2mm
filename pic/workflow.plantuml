@@ -1,0 +1,53 @@
+@startuml
+
+skinparam DefaultFontName Hack
+skinparam shadowing false
+skinparam RoundCorner 10
+skinparam ComponentBorderColor Black
+skinparam Actor {
+    BorderColor Black
+    BackgroundColor White
+    'BackgroundColor hidden 'Damit etwas verschwindet"
+
+}
+skinparam Component {
+    BorderColor Black
+    BackgroundColor AliceBlue
+    ArrowThickness 2
+
+}
+   actor Author
+   folder "LaTeX-Project" {
+      file "LaTeX-Document.tex" as lx
+      file "LaTeX-Document.toc" as toc
+      file "LaTex-Document.pdf" as pdf
+      file "LaTex-Document-toc-mm.plantuml" as mm1
+      file "LaTex-Document-toc-mm.png" as png
+
+      lx --> pdf
+      lx --> toc: created during compile
+      toc .[hidden].> mm1
+      lx .[hidden]..> png
+
+      component toc2mm
+   }
+   component plantuml
+
+   Author --> lx: edit &\ncompile
+   'Author --> toc2mm: runs
+   'Author ---> plantuml: uses
+   toc <.. toc2mm: 1: read
+
+   mm1 <.. toc2mm: 2: creates
+
+   mm1 <... plantuml: 3: uses
+   png <... plantuml: 4: generates
+
+   Author --> png: inspect
+
+   note right of plantuml
+      * use local installation or
+      * online version [[http://plantuml.com/plantuml]]
+   end note
+
+@enduml

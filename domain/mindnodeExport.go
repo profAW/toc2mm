@@ -6,6 +6,23 @@ import (
 
 func DoMindnodeConversion(lines []string) []string {
 
+	lines = convertPlantuml2mindnode(lines)
+	lines = trimTrailingWhitespaces(lines)
+	lines = removeEmptyLines(lines) // reuse from plantumlexport.go
+
+	return lines
+}
+
+func trimTrailingWhitespaces(lines []string) []string {
+
+	for key, line := range lines {
+		line = strings.Trim(line, "  ")
+		lines[key] = line
+	}
+	return lines
+}
+
+func convertPlantuml2mindnode(lines []string) []string {
 	for key, line := range lines {
 		line = strings.ReplaceAll(line, "* TOC", "")
 		line = strings.ReplaceAll(line, "**[#Orange]", "")
@@ -18,6 +35,7 @@ func DoMindnodeConversion(lines []string) []string {
 		line = strings.ReplaceAll(line, "@startmindmap", "")
 		line = strings.ReplaceAll(line, "@endmindmap", "")
 		line = strings.ReplaceAll(line, "left side", "")
+		line = strings.TrimPrefix(line, " ")
 		lines[key] = line
 	}
 	return lines

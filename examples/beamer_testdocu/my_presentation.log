@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.9.17)  20 SEP 2021 11:24
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.9.17)  20 SEP 2021 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -978,14 +978,6 @@ Missing character: There is no 5 ("35) in font nullfont!
 
 ] [8
 
-] [9
-
-] [10
-
-] [11
-
-] [12
-
 ]
 \tf@nav=\write6
 \openout6 = `my_presentation.nav'.
@@ -998,15 +990,15 @@ Missing character: There is no 5 ("35) in font nullfont!
 
  (./my_presentation.aux)
 Package rerunfilecheck Info: File `my_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 07607E87196E0F003565E325439845D4;1089.
+(rerunfilecheck)             Checksum: 60F1C91D5DE9E7E1C2F1000D22570587;1154.
  ) 
 Here is how much of TeX's memory you used:
- 22336 strings out of 478010
- 424947 string characters out of 5849239
- 756331 words of memory out of 5000000
- 42192 multiletter control sequences out of 15000+600000
+ 22297 strings out of 478010
+ 424294 string characters out of 5849239
+ 755833 words of memory out of 5000000
+ 42153 multiletter control sequences out of 15000+600000
  403862 words of font info for 37 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  100i,16n,108p,454b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my_presentation.pdf (12 pages).
+Output written on my_presentation.pdf (8 pages).

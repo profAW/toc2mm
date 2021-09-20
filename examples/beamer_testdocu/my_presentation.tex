@@ -13,9 +13,9 @@
 \usetheme[numbers,totalnumber,compress,sidebarshades]{PaloAlto}
 \setbeamertemplate{footline}[frame number]
 \useinnertheme{circles}
-  \usefonttheme[onlymath]{serif}
-  \setbeamercovered{transparent}
-  \setbeamertemplate{blocks}[rounded][shadow=true]
+\usefonttheme[onlymath]{serif}
+\setbeamercovered{transparent}
+\setbeamertemplate{blocks}[rounded][shadow=true]
 
 
 \title{A Title}
@@ -32,51 +32,34 @@
 \frame
 {
 \frametitle{Overview}
-\tableofcontents%[pausesection]
+\tableofcontents
 }
 
-\part{Alpha}
-\section{A}
-    \subsection{A-I}
-        \subsubsection{A-I-1}
-            \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	  \end{frame}
 
-        \subsubsection{A-I-1-b}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-    \subsection{A-II}
+\part{Introduction}
+\section{Basic Theory}
+    \subsection{Foundation}
+        \subsubsection{Rule 1}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+        \subsubsection{Rule 2}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+    \subsection{Advanced}
+\section{Complex Theory}
+    \subsection{Some Math}
+        \subsubsection{Equation 1}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+        \subsubsection{Equation 2}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+    \subsection{Some Programming}
 
-\section{B}
-    \subsection{B-I}
-        \subsubsection{B-I-1}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-        \subsubsection{B-I-1-b}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-    \subsection{B-II}
-
-\section{C}
-    \subsection{C-I}
-        \subsubsection{C-I-1}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-        \subsubsection{C-I-1-b}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-    \subsection{C-II}
-
-\section{D}
-    \subsection{D-I}
-        \subsubsection{D-I-1}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-        \subsubsection{D-I-1-b}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
-    \subsection{D-II}
-
-\part{Omega}
-
-\section{E}
-    \subsection{E-I}
-        \subsubsection{E-I-1}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}		\end{frame}
-        \subsubsection{E-I-1-b}
-                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}		\end{frame}
-    \subsection{E-II}
+\part{Implementation}
+\section{Golang Basics}
+    \subsection{Data Structures}
+        \subsubsection{Array}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+        \subsubsection{Dictionary}
+                \begin{frame}{Name}{\subsubsecname}	content \end{frame}
+    \subsection{Concurrency}
+\section{Implementation in Golang}
 
 \end{document}

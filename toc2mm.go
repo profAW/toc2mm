@@ -30,27 +30,28 @@ func doConversion(debug bool) {
 }
 
 var DebugMode = "true"
-var version = "0.0.11"
+var version = "0.1.1"
 
 func main() {
 	debug, _ := strconv.ParseBool(DebugMode)
 
-	fmt.Println("-------------------------------------------------------")
+	fmt.Println("------------------------------------------------------------")
 	fmt.Println("████████╗░█████╗░░█████╗░██████╗░███╗░░░███╗███╗░░░███╗")
 	fmt.Println("╚══██╔══╝██╔══██╗██╔══██╗╚════██╗████╗░████║████╗░████║")
 	fmt.Println("░░░██║░░░██║░░██║██║░░╚═╝░░███╔═╝██╔████╔██║██╔████╔██║")
 	fmt.Println("░░░██║░░░██║░░██║██║░░██╗██╔══╝░░██║╚██╔╝██║██║╚██╔╝██║")
 	fmt.Println("░░░██║░░░╚█████╔╝╚█████╔╝███████╗██║░╚═╝░██║██║░╚═╝░██║")
 	fmt.Println("░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝")
-	fmt.Println("-------------------------------------------------------")
+	fmt.Println("-------------------------------------------------------------")
+	fmt.Println("Aim of the programm : Convert a Latex toc-file into a mindmap")
 	fmt.Println("toc2mm-Version      : " + version)
 	fmt.Println("Debug-Mode          : " + strconv.FormatBool(debug))
-	fmt.Println("-------------------------------------------------------")
+	fmt.Println("-------------------------------------------------------------")
 	fmt.Println("")
 
 	doConversion(debug)
 
-	fmt.Println("---------------- Conversion finished -----------------")
+	fmt.Println("---------------- Conversion finished -----------------------")
 	fmt.Println("Press enter key to exit...")
 	helper.CloseApplicationWithOutError()
 }

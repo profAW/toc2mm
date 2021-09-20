@@ -1,28 +1,18 @@
 @startmindmap
 * TOC
-**[#Orange] 1.A
-***[#lightblue] 1.1.A-I
-****[#lightgreen] 1.1.1.A-I-1
-****[#lightgreen] 1.1.2.A-I-1-b
-***[#lightblue] 1.2.A-II
-**[#Orange] 2.B
-***[#lightblue] 2.1.B-I
-****[#lightgreen] 2.1.1.B-I-1
-****[#lightgreen] 2.1.2.B-I-1-b
-***[#lightblue] 2.2.B-II
-**[#Orange] 3.C
-***[#lightblue] 3.1.C-I
-****[#lightgreen] 3.1.1.C-I-1
-****[#lightgreen] 3.1.2.C-I-1-b
-***[#lightblue] 3.2.C-II
+**[#Orange] 1.Basic Theory
+***[#lightblue] 1.1.Foundation
+****[#lightgreen] 1.1.1.Rule 1
+****[#lightgreen] 1.1.2.Rule 2
+***[#lightblue] 1.2.Advanced
+**[#Orange] 2.Complex Theory
+***[#lightblue] 2.1.Some Math
+****[#lightgreen] 2.1.1.Equation 1
+****[#lightgreen] 2.1.2.Equation 2
+***[#lightblue] 2.2.Some Programming
 left side
-**[#Orange] 4.D
-***[#lightblue] 4.1.D-I
-****[#lightgreen] 4.1.1.D-I-1
-****[#lightgreen] 4.1.2.D-I-1-b
-***[#lightblue] 4.2.D-II
-**[#Orange] 5.E
-***[#lightblue] 5.1.E-I
-****[#lightgreen] 5.1.1.E-I-1
-****[#lightgreen] 5.1.2.E-I-1-b
+**[#Orange] 3.Golang Basics
+***[#lightblue] 3.1.Data Structures
+****[#lightgreen] 3.1.1.Array
+****[#lightgreen] 3.1.2.Dictionary
 @endmindmap

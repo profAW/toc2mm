@@ -1,28 +1,14 @@
-
-
- 1.A
-	 1.1.A-I
-		1.1.1.A-I-1
-		1.1.2.A-I-1-b
-	 1.2.A-II
- 2.B
-	 2.1.B-I
-		2.1.1.B-I-1
-		2.1.2.B-I-1-b
-	 2.2.B-II
- 3.C
-	 3.1.C-I
-		3.1.1.C-I-1
-		3.1.2.C-I-1-b
-	 3.2.C-II
-
- 4.D
-	 4.1.D-I
-		4.1.1.D-I-1
-		4.1.2.D-I-1-b
-	 4.2.D-II
- 5.E
-	 5.1.E-I
-		5.1.1.E-I-1
-		5.1.2.E-I-1-b
-
+1.Basic Theory
+	 1.1.Foundation
+		1.1.1.Rule 1
+		1.1.2.Rule 2
+	 1.2.Advanced
+2.Complex Theory
+	 2.1.Some Math
+		2.1.1.Equation 1
+		2.1.2.Equation 2
+	 2.2.Some Programming
+3.Golang Basics
+	 3.1.Data Structures
+		3.1.1.Array
+		3.1.2.Dictionary

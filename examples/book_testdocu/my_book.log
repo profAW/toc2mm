@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.9.17)  20 SEP 2021 09:52
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.9.17)  20 SEP 2021 14:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -39,32 +39,32 @@ File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
 ) (./my_book.aux)
 \openout1 = `my_book.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-2.
+0.
 
 (/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 14.
+(Font)              <14.4> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 14.
+(Font)              <7> on input line 12.
  [1
 
 
@@ -103,10 +103,10 @@ Chapter 3.
 Here is how much of TeX's memory you used:
  516 strings out of 478010
  10052 string characters out of 5849239
- 310613 words of memory out of 5000000
+ 311602 words of memory out of 5000000
  20915 multiletter control sequences out of 15000+600000
  407159 words of font info for 49 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 37i,6n,41p,147b,195s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,6n,41p,156b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on my_book.pdf (13 pages).

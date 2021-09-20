@@ -1,36 +1,36 @@
 @startmindmap
 * TOC
-**[#Orange]   Alpha 
-***[#lightblue]  1 01 
-****[#lightgreen]  1.1 A 
-*****[#lightyellow]  1.1.1 A-I 
-******[#lightcyan]  1.1.1.1 A-I-1 
-*******[#Ivory]  1.1.1.1.1 A-I-1-a 
-********[#MintCream]  1.1.1.1.1.1 A-I-1-a-i 
-******[#lightcyan]  1.1.1.2 A-I-1-b 
-*****[#lightyellow]  1.1.2 A-II 
-****[#lightgreen]  1.2 B 
-*****[#lightyellow]  1.2.1 B-I 
-******[#lightcyan]  1.2.1.1 B-I-1 
-******[#lightcyan]  1.2.1.2 B-I-1-b 
-*****[#lightyellow]  1.2.2 B-II 
-***[#lightblue]  2 10 
-****[#lightgreen]  2.1 C 
-*****[#lightyellow]  2.1.1 C-I 
-******[#lightcyan]  2.1.1.1 C-I-1 
-******[#lightcyan]  2.1.1.2 C-I-1-b 
-*****[#lightyellow]  2.1.2 C-II 
-****[#lightgreen]  2.2 D 
-*****[#lightyellow]  2.2.1 D-I 
-******[#lightcyan]  2.2.1.1 D-I-1 
-******[#lightcyan]  2.2.1.2 D-I-1-b 
-*****[#lightyellow]  2.2.2 D-II 
+**[#Orange]   Introduction 
+***[#lightblue]  1 Theory 
+****[#lightgreen]  1.1 Basic Theory 
+*****[#lightyellow]  1.1.1 Foundation 
+******[#lightcyan]  1.1.1.1 Rule 1 
+*******[#Ivory]  1.1.1.1.1 Left side of rule 
+********[#MintCream]  1.1.1.1.1.1 Parameter of rule  
+******[#lightcyan]  1.1.1.2 Rule 2 
+*****[#lightyellow]  1.1.2 Advanced 
+****[#lightgreen]  1.2 Complex Theory 
+*****[#lightyellow]  1.2.1 Some Math 
+******[#lightcyan]  1.2.1.1 Equation 1 
+******[#lightcyan]  1.2.1.2 Equation 2 
+*****[#lightyellow]  1.2.2 Some Programming 
+***[#lightblue]  2 Use Cases 
+****[#lightgreen]  2.1 Use Case A 
+*****[#lightyellow]  2.1.1 Pre Conditions 
+******[#lightcyan]  2.1.1.1 Pre-Condition A 
+******[#lightcyan]  2.1.1.2 Pre-Condition B 
+*****[#lightyellow]  2.1.2 Pre Condition 
+****[#lightgreen]  2.2 Use Case B 
+*****[#lightyellow]  2.2.1 Pre Conditions 
+******[#lightcyan]  2.2.1.1 Pre-Condition A 
+******[#lightcyan]  2.2.1.2 Pre-Condition B 
+*****[#lightyellow]  2.2.2 Pre Condition 
 left side
-**[#Orange]   Omega 
-***[#lightblue]  3 10 
-****[#lightgreen]  3.1 E 
-*****[#lightyellow]  3.1.1 E-I 
-******[#lightcyan]  3.1.1.1 E-I-1 
-******[#lightcyan]  3.1.1.2 E-I-1-b 
-*****[#lightyellow]  3.1.2 E-II 
+**[#Orange]   Implementation 
+***[#lightblue]  3 Implementation in Golang 
+****[#lightgreen]  3.1 Golang Basics 
+*****[#lightyellow]  3.1.1 Data Structures 
+******[#lightcyan]  3.1.1.1 Array 
+******[#lightcyan]  3.1.1.2 Dictionary 
+*****[#lightyellow]  3.1.2 Concurrency 
 @endmindmap
