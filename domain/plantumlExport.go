@@ -96,7 +96,7 @@ func replaceTocWithPlantuml(line string, tocLevel int) string {
 		line = strings.ReplaceAll(line, "section", "**[#Orange]")
 	}
 	// if beamer
-	line = strings.ReplaceAll(line, "intoc", "]") // remove "intoc"
+	line = strings.ReplaceAll(line, "intoc", "") // remove "intoc"
 
 	return line
 }

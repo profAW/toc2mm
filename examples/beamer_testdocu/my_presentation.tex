@@ -1,0 +1,82 @@
+\documentclass{beamer}[10]
+\usepackage{pgf}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage{hyperref}
+
+
+\setbeamercovered{transparent}
+\mode<presentation>
+\usetheme[numbers,totalnumber,compress,sidebarshades]{PaloAlto}
+\setbeamertemplate{footline}[frame number]
+\useinnertheme{circles}
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{blocks}[rounded][shadow=true]
+
+
+\title{A Title}
+\author{My Name is}
+\institute{I work at}
+\date{\today}
+
+
+
+\begin{document}
+\frame{\titlepage \vspace{-0.5cm}
+}
+
+\frame
+{
+\frametitle{Overview}
+\tableofcontents%[pausesection]
+}
+
+\part{Alpha}
+\section{A}
+    \subsection{A-I}
+        \subsubsection{A-I-1}
+            \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	  \end{frame}
+
+        \subsubsection{A-I-1-b}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+    \subsection{A-II}
+
+\section{B}
+    \subsection{B-I}
+        \subsubsection{B-I-1}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+        \subsubsection{B-I-1-b}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+    \subsection{B-II}
+
+\section{C}
+    \subsection{C-I}
+        \subsubsection{C-I-1}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+        \subsubsection{C-I-1-b}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+    \subsection{C-II}
+
+\section{D}
+    \subsection{D-I}
+        \subsubsection{D-I-1}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+        \subsubsection{D-I-1-b}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}	\end{frame}
+    \subsection{D-II}
+
+\part{Omega}
+
+\section{E}
+    \subsection{E-I}
+        \subsubsection{E-I-1}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}		\end{frame}
+        \subsubsection{E-I-1-b}
+                    \begin{frame}< handout:1|beamer:1-|trans:0>[allowframebreaks]{Name}{\subsubsecname}		\end{frame}
+    \subsection{E-II}
+
+\end{document}
