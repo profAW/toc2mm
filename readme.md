@@ -1,4 +1,4 @@
-# toc2mm - table of content to mindmap
+# toc2mm - convert the table of content of a LaTeX document into a mindmap
 
 Creation of a Mindmap from the table of content of a LaTeX document to increase the understandability of the document and make the structure of the document even visible.
 
