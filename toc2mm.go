@@ -2,16 +2,45 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"toc2mm/domain"
 	"toc2mm/helper"
 	"toc2mm/infrastructure"
 )
 
-func doConversion(debug bool) {
+func FolderIsValidDir(folder string) bool {
+	dir, err := os.Stat(folder)
+	if err != nil {
+		fmt.Println("failed to open directory, error: %w", err)
+		return false
+	}
+	if !dir.IsDir() {
+		fmt.Println("%q is not a directory", dir.Name())
+		return false
+	}
+	return true
+}
+func getConversionFoler(args []string, debug bool) string {
 
-	var directory = helper.GetCurrentDir(debug)
-	fmt.Println("Working director is : " + directory)
+	folder := helper.GetCurrentDir(debug)
+	if len(args) > 0 {
+		folder = args[0]
+	}
+
+	isAValidFolder := FolderIsValidDir(folder)
+
+	if !isAValidFolder {
+		fmt.Println("---------------- Conversion failed, no valid folder or files -----------------------")
+		fmt.Println("Press enter key to exit...")
+		helper.CloseApplicationWithError()
+	}
+
+	fmt.Println("Working director is : " + folder)
+	return folder
+}
+
+func doConversion(directory string) {
 
 	files, _ := infrastructure.GetTocFilesInFolders(directory)
 
@@ -30,7 +59,7 @@ func doConversion(debug bool) {
 }
 
 var DebugMode = "true"
-var version = "0.1.1"
+var version = "0.2.0"
 
 func main() {
 	debug, _ := strconv.ParseBool(DebugMode)
@@ -49,7 +78,10 @@ func main() {
 	fmt.Println("-------------------------------------------------------------")
 	fmt.Println("")
 
-	doConversion(debug)
+	argsWithoutProg := os.Args[1:]
+	directory := getConversionFoler(argsWithoutProg, debug)
+
+	doConversion(directory)
 
 	fmt.Println("---------------- Conversion finished -----------------------")
 	fmt.Println("Press enter key to exit...")
