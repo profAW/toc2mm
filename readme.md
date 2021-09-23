@@ -24,11 +24,21 @@ When you run the build "toc2mm" software inside your LaTeX-project folder the so
 ### Installing
 
 * Download the pre compiled version or build your version of the toc2mm software (if you build your own version, please note the build.txt remarks)
-* Place the toc2mm software inside your LaTeX-project
+* Place the toc2mm software inside your LaTeX-project or somewhere on your machine
 
 ### Executing program
 
+Option 1: 
+* Place the executable inside your LaTeX-Project
 * Start the software (double click)
+
+Option 2:
+* Run the software via command line with folder as parameter
+```console
+foo@bar:~$ toc2mm ".../toc2mm/examples"
+```
+
+Finally
 * Convert the output via plantuml
 
 A example from tex via toc to plantuml (on premis) and the to picture via Microsoft VS Code is shown at the following picture. 
@@ -46,6 +56,8 @@ André Wenzel
 
 ## Version History
 
+* 0.2.0
+  * Command Line options added
 * 0.1.1
     * First public Release
 
