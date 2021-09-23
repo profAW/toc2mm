@@ -17,8 +17,10 @@ When you run the build "toc2mm" software inside your LaTeX-project folder the so
 * LaTeX:
   * The command "\tableofcontents" must be used inside the tex-document, only then a toc-file will be created
   * The depth of the tabel of conent can be controlled by the following command:
-    * \setcounter{tocdepth}{5} 
-    * \setcounter{secnumdepth}{5}
+  ```latex
+    \setcounter{tocdepth}{5} 
+    \setcounter{secnumdepth}{5}
+  ```
 * Golang, if you want to build your own version
 
 ### Installing
@@ -40,6 +42,9 @@ foo@bar:~$ toc2mm ".../toc2mm/examples"
 
 Finally
 * Convert the output via plantuml
+```console
+foo@bar:~$ java -jar .../plantuml.jar ".../toc2mm/examples"
+```
 
 A example from tex via toc to plantuml (on premis) and the to picture via Microsoft VS Code is shown at the following picture. 
 ![workflow concept](pic/toc2mm_concept.jpg)
